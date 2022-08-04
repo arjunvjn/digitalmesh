@@ -10,10 +10,6 @@ def home(request):
     page = request.GET.get('page', 1)
     paginator = Paginator(todo_list, 5)
     todos = paginator.page(page)
-    # except Paginator.PageNotAnInteger:
-    #     todos = paginator.page(1)
-    # except Paginator.EmptyPage:
-    #     todos = paginator.page(paginator.num_pages)
     return render(request,'home.html',{'todo_list':todos})
 
 def create_todo(request):
@@ -39,10 +35,8 @@ def update_todo(request,id=-1):
 
 def delete_todo(request):
     if request.method=='GET':
-        print('hello')
         try:
             id=int(request.GET.get('id'))
-            print(id)
             Todotable.objects.filter(pk=id).delete()
             return JsonResponse({'msg':'Success'})
         except:
