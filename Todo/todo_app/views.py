@@ -60,7 +60,7 @@ def search_todo(request):
     if request.method=='POST':
         try:
             todo_list=Todotable.objects.filter(name__contains=request.POST['search'])
-            return render(request,'',{'todo_list':todo_list})
+            return render(request,'home.html',{'todo_list':todo_list})
         except:
             return redirect('/index/')
     return redirect('/index/')
