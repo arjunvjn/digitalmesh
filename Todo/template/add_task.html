@@ -54,6 +54,7 @@
                         <div style="margin-bottom: 10px; color: white; width: 200px; ">
                           <label>Date</label>
                           {% if todo.date %}
+			  <label>Enter in dd-mm-yyyy --:-- format</label>
                           <input type="text" name="date" value="{{todo.date}}">
                           {% else %}
                           <input type="datetime-local" name="date" value="{{todo.date}}">
